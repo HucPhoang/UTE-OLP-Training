@@ -29,33 +29,23 @@ int main()
     int n;
     cin >> n;
 
-    if (n == 43) {
-        cout << 625;
-        return 0;
-    }
-
-    if (n == 108) {
-        cout << 0;
-        return 0;
-    }
-
-    if (n == 10000) {
-        cout << 31125241;
-        return 0;
-    }
-
     vector<ll> a(n);
     for (int i = 0; i < n; ++i)
         cin >> a[i];
+    vector<ll> b;
+    for (int i = 0; i < n; ++i)
+        b.push_back(a[i]);
 
-    ll l = 0, r = 1e9;
+    sort(b.begin(), b.end());
+
+    ll l = 0, r = n-1;
     ll res = 0LL;
 
     while (l <= r) {
         ll mid = (l+r)>>1;
 
-        if (check(n, a, mid))
-            res = mid*mid, l = mid+1;
+        if (check(n, a, b[mid]))
+            res = b[mid]*b[mid], l = mid+1;
         else r = mid-1;
     }
 
