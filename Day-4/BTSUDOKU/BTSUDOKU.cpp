@@ -38,7 +38,7 @@ bool backtracking(char table[SZ][SZ], int ind) {
             if (backtracking(table, ind + 1)) return true;
             table[row][col] = '.';
         }
-    }
+    }   
 
     return false;
 }
